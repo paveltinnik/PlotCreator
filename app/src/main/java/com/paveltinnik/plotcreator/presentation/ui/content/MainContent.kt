@@ -1,4 +1,4 @@
-package com.paveltinnik.plotcreator.presentation.main
+package com.paveltinnik.plotcreator.presentation.ui.content
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
+import com.paveltinnik.plotcreator.presentation.main.MainComponent
 
 @Composable
 fun MainContent(

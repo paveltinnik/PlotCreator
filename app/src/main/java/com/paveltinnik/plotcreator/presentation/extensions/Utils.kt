@@ -7,8 +7,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 
-fun ComponentContext.componentScope() =
-    CoroutineScope(Dispatchers.Main.immediate + SupervisorJob())
-        .apply {
-            lifecycle.doOnDestroy { cancel() }
-        }
+fun ComponentContext.componentScope() = CoroutineScope(
+    Dispatchers.Main.immediate + SupervisorJob()
+)
+    .apply {
+        lifecycle.doOnDestroy { cancel() }
+    }

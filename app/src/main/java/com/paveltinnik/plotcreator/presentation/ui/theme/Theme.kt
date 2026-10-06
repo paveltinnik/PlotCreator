@@ -1,6 +1,5 @@
-package com.paveltinnik.plotcreator.ui.theme
+package com.paveltinnik.plotcreator.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

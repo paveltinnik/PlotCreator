@@ -1,4 +1,4 @@
-package com.paveltinnik.plotcreator.ui.theme
+package com.paveltinnik.plotcreator.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

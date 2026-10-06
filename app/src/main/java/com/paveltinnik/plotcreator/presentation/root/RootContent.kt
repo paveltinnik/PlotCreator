@@ -5,9 +5,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
-import com.paveltinnik.plotcreator.presentation.main.MainContent
-import com.paveltinnik.plotcreator.presentation.plot.Plot
-import com.paveltinnik.plotcreator.ui.theme.PlotCreatorTheme
+import com.paveltinnik.plotcreator.presentation.ui.content.MainContent
+import com.paveltinnik.plotcreator.presentation.ui.content.Plot
+import com.paveltinnik.plotcreator.presentation.ui.theme.PlotCreatorTheme
 
 @Composable
 fun RootContent(

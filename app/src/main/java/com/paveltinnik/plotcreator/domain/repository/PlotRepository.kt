@@ -1,13 +1,11 @@
 package com.paveltinnik.plotcreator.domain.repository
 
 import com.paveltinnik.plotcreator.domain.model.SineWave
+import kotlinx.coroutines.flow.Flow
 
 interface PlotRepository {
 
-    fun changeSineParameter(
-        amplitude: Float,
-        phase: Float,
-    )
+    fun changeSineParameter(sineWave: SineWave)
 
-    fun getSineWaves(): List<SineWave>
+    val sineWaves: Flow<List<SineWave>>
 }

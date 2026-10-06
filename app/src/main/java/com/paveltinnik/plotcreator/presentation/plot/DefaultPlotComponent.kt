@@ -42,7 +42,7 @@ class DefaultPlotComponent(
     }
 
     override fun changeAnimationStatus(isAnimated: Boolean) {
-        TODO("Not yet implemented")
+        store.accept(PlotStore.Intent.ToggleAnimation(isAnimated))
     }
 
     override fun onClickBack() {
