@@ -11,6 +11,8 @@ composeBom = "2026.09.00"
 mvi = "4.4.0"
 decompose = "3.5.0"
 ksp = "2.3.10"
+kotlinxCoroutinesTest = "1.8.0"
+turbine = "1.1.0"
 
 
 [libraries]
@@ -36,10 +38,12 @@ mvikotlin-extensions-coroutines = {group = "com.arkivanov.mvikotlin", name = "mv
 decompose-core = { group = "com.arkivanov.decompose", name = "decompose", version.ref = "decompose" }
 decompose-jetpack = { group = "com.arkivanov.decompose", name = "extensions-compose", version.ref = "decompose" }
 
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-

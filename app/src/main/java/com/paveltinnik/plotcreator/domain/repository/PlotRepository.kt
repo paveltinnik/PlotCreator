@@ -7,5 +7,7 @@ interface PlotRepository {
 
     fun changeSineParameter(sineWave: SineWave)
 
+    fun setSineWaves(waves: List<SineWave>)
+
     val sineWaves: Flow<List<SineWave>>
 }

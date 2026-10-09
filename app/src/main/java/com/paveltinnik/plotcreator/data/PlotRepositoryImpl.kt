@@ -9,9 +9,9 @@ import kotlinx.coroutines.flow.flow
 object PlotRepositoryImpl : PlotRepository {
 
     private val _wavesList = mutableListOf<SineWave>(
-        SineWave(1, 1.0f, 0f),
-        SineWave(2, 1.0f, 50f),
-        SineWave(3, 1.0f, -120f),
+        SineWave(id = 1, amplitude = 1.0f, frequency = 1.0f, phase = 0f),
+        SineWave(id = 2, amplitude = 1.0f, frequency = 1.0f, phase = 120f),
+        SineWave(id = 3, amplitude = 1.0f, frequency = 1.0f, phase = -120f),
     )
     private val wavesList: List<SineWave>
         get() = _wavesList.toList()
@@ -26,6 +26,12 @@ object PlotRepositoryImpl : PlotRepository {
             _wavesList[index] = sineWave
             wavesListChangeEvents.tryEmit(Unit)
         }
+    }
+
+    override fun setSineWaves(waves: List<SineWave>) {
+        _wavesList.clear()
+        _wavesList.addAll(waves)
+        wavesListChangeEvents.tryEmit(Unit)
     }
 
     override val sineWaves: Flow<List<SineWave>> = flow {

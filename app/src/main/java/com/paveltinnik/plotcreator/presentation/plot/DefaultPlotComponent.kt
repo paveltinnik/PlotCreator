@@ -4,6 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.mvikotlin.core.instancekeeper.getStore
 import com.arkivanov.mvikotlin.extensions.coroutines.labels
 import com.arkivanov.mvikotlin.extensions.coroutines.stateFlow
+import com.paveltinnik.plotcreator.domain.model.SignalPreset
 import com.paveltinnik.plotcreator.domain.model.SineWave
 import com.paveltinnik.plotcreator.presentation.extensions.componentScope
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -43,6 +44,14 @@ class DefaultPlotComponent(
 
     override fun changeAnimationStatus(isAnimated: Boolean) {
         store.accept(PlotStore.Intent.ToggleAnimation(isAnimated))
+    }
+
+    override fun toggleSumVisibility(isVisible: Boolean) {
+        store.accept(PlotStore.Intent.ToggleSumVisibility(isVisible))
+    }
+
+    override fun applyPreset(preset: SignalPreset) {
+        store.accept(PlotStore.Intent.ApplyPreset(preset))
     }
 
     override fun onClickBack() {

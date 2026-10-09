@@ -8,6 +8,7 @@ import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineBootstrapper
 import com.arkivanov.mvikotlin.extensions.coroutines.CoroutineExecutor
 import com.arkivanov.mvikotlin.main.store.DefaultStoreFactory
 import com.paveltinnik.plotcreator.data.PlotRepositoryImpl
+import com.paveltinnik.plotcreator.domain.model.SignalPreset
 import com.paveltinnik.plotcreator.domain.model.SineWave
 import com.paveltinnik.plotcreator.domain.usecase.ChangeSineWaveUsecase
 import com.paveltinnik.plotcreator.domain.usecase.GetSineWavesUsecase
@@ -20,7 +21,8 @@ interface PlotStore : Store<Intent, State, Label> {
 
     data class State(
         val waves: List<SineWave>,
-        val isAnimated: Boolean = false
+        val isAnimated: Boolean = false,
+        val isSumVisible: Boolean = true,
     )
 
     sealed interface Intent {
@@ -28,6 +30,10 @@ interface PlotStore : Store<Intent, State, Label> {
         data class ChangeSineWave(val sineWave: SineWave) : Intent
 
         data class ToggleAnimation(val isAnimated: Boolean) : Intent
+
+        data class ToggleSumVisibility(val isSumVisible: Boolean) : Intent
+
+        data class ApplyPreset(val preset: SignalPreset) : Intent
 
         object ClickBack : Intent
     }
@@ -47,7 +53,7 @@ class PlotStoreFactory {
     fun create(): PlotStore =
         object : PlotStore, Store<Intent, State, Label> by storeFactory.create(
             name = "PlotStore",
-            initialState = State(listOf(), false),
+            initialState = State(listOf(), false, true),
             bootstrapper = BootstrapperImpl(),
             executorFactory = ::ExecutorImpl,
             reducer = ReducerImpl
@@ -67,6 +73,8 @@ class PlotStoreFactory {
         data class ChangeSineWave(val sineWave: SineWave) : Msg
 
         data class ToggleAnimation(val isAnimated: Boolean) : Msg
+
+        data class ToggleSumVisibility(val isSumVisible: Boolean) : Msg
     }
 
     private inner class BootstrapperImpl() : CoroutineBootstrapper<Action>() {
@@ -91,13 +99,21 @@ class PlotStoreFactory {
         override fun executeIntent(intent: Intent) {
             when (intent) {
                 is Intent.ChangeSineWave -> {
-                    val state = state()
                     changeSineWaveUsecase(intent.sineWave)
                     dispatch(Msg.ChangeSineWave(sineWave = intent.sineWave))
                 }
 
                 is Intent.ToggleAnimation -> {
                     dispatch(Msg.ToggleAnimation(intent.isAnimated))
+                }
+
+                is Intent.ToggleSumVisibility -> {
+                    dispatch(Msg.ToggleSumVisibility(intent.isSumVisible))
+                }
+
+                is Intent.ApplyPreset -> {
+                    PlotRepositoryImpl.setSineWaves(intent.preset.waves)
+                    dispatch(Msg.WavesLoaded(intent.preset.waves))
                 }
 
                 Intent.ClickBack -> {
@@ -125,6 +141,10 @@ class PlotStoreFactory {
 
                 is Msg.ToggleAnimation -> {
                     copy(isAnimated = msg.isAnimated)
+                }
+
+                is Msg.ToggleSumVisibility -> {
+                    copy(isSumVisible = msg.isSumVisible)
                 }
             }
         }

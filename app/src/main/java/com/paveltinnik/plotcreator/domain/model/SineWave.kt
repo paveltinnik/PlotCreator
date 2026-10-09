@@ -7,5 +7,7 @@ import kotlinx.parcelize.Parcelize
 data class SineWave(
     val id: Int,
     val amplitude: Float,
-    val phase: Float,
+    val frequency: Float = 1.0f,
+    val phase: Float = 0f,
+    val isVisible: Boolean = true,
 ) : Parcelable
