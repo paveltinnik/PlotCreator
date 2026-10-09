@@ -1,0 +1,44 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Dark Circular Container -->
+    <path
+        android:fillColor="#1E1E2C"
+        android:pathData="M54,54m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0" />
+
+    <!-- Horizontal Center Axis Line -->
+    <path
+        android:pathData="M18,54 L90,54"
+        android:strokeColor="#3A3A52"
+        android:strokeWidth="1.5" />
+
+    <!-- Vertical Axis Line -->
+    <path
+        android:pathData="M54,18 L54,90"
+        android:strokeColor="#3A3A52"
+        android:strokeWidth="1.5" />
+
+    <!-- Yellow Sine Wave Path -->
+    <path
+        android:pathData="M18,54 C30,30 42,78 54,54 C66,30 78,78 90,54"
+        android:strokeColor="#FFD700"
+        android:strokeWidth="3.5"
+        android:strokeLineCap="round" />
+
+    <!-- Red Sine Wave Path -->
+    <path
+        android:pathData="M18,54 C30,78 42,30 54,54 C66,78 78,30 90,54"
+        android:strokeColor="#F44336"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+
+    <!-- Green Sine Wave Path -->
+    <path
+        android:pathData="M18,54 C27,20 45,88 54,54 C63,20 81,88 90,54"
+        android:strokeColor="#4CAF50"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+</vector>
